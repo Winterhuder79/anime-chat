@@ -18,6 +18,7 @@ import {
 import { AbilityPanel } from '../components/AbilityPanel';
 import { ChatBubble } from '../components/ChatBubble';
 import { ApiKeyInput } from '../components/ApiKeyInput';
+import { ActionButtons } from '../components/ActionButtons';
 import { useChat } from '../hooks/useChat';
 import { Character } from '../types/Character';
 import { ChatMessage } from '../types/Story';
@@ -126,6 +127,12 @@ export const StoryScreen: React.FC<Props> = ({ route, navigation }) => {
     }
   };
 
+  const handleActionSelect = async (actionText: string) => {
+    if (!isLoading) {
+      await sendMessage(actionText);
+    }
+  };
+
   const handleReset = () => {
     if (Platform.OS === 'web') {
       const confirmed = window.confirm(
@@ -213,6 +220,13 @@ export const StoryScreen: React.FC<Props> = ({ route, navigation }) => {
           contentContainerStyle={styles.messagesContainer}
           ListFooterComponent={renderFooter}
           showsVerticalScrollIndicator={false}
+        />
+
+        {/* Action Buttons */}
+        <ActionButtons
+          character={character}
+          onActionSelect={handleActionSelect}
+          disabled={isLoading}
         />
 
         {/* Input Area */}
