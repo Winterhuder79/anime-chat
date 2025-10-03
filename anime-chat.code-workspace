@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"typescript.tsdk": "node_modules/typescript/lib",
+		"typescript.enablePromptUseWorkspaceTsdk": true,
+		"emmet.includeLanguages": {
+			"javascript": "javascriptreact",
+			"typescript": "typescriptreact"
+		},
+		"explorer.confirmDelete": false,
+		"explorer.confirmDragAndDrop": false,
+		"errorLens.enabledDiagnosticLevels": [
+			"error",
+			"warning",
+			"info"
+		],
+		"errorLens.excludeBySource": [
+			"cSpell"
+		]
+	}
+}
