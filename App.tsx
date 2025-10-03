@@ -1,20 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import React from 'react';
+import { CharacterSelectionScreen } from './src/screens/CharacterSelectionScreen';
+import { StoryScreen } from './src/screens/StoryScreen';
+import { Character } from './src/types/Character';
 
-export default function App() {
+type RootStackParamList = {
+  CharacterSelection: undefined;
+  Story: { character: Character };
+};
+
+const Stack = createStackNavigator<RootStackParamList>();
+
+const App: React.FC = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="CharacterSelection"
+        screenOptions={{
+          headerShown: false,
+          cardStyle: { backgroundColor: '#0a0a0a' },
+        }}
+      >
+        <Stack.Screen
+          name="CharacterSelection"
+          component={CharacterSelectionScreen}
+        />
+        <Stack.Screen name="Story" component={StoryScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
