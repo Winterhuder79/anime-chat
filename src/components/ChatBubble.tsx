@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   },
   bubble: {
     maxWidth: '80%',
-    padding: 12,
+    padding: 10,
     borderRadius: 16,
     elevation: 2,
     shadowColor: '#000',
@@ -96,15 +96,15 @@ const styles = StyleSheet.create({
     borderColor: '#546e7a',
   },
   label: {
-    fontSize: 11,
+    fontSize: 13,
     fontWeight: '600',
     color: '#b0bec5',
-    marginBottom: 6,
+    marginBottom: 4,
     textTransform: 'uppercase',
   },
   text: {
-    fontSize: 15,
-    lineHeight: 22,
+    fontSize: 17,
+    lineHeight: 24,
   },
   userText: {
     color: '#ffffff',
@@ -114,12 +114,11 @@ const styles = StyleSheet.create({
   },
   systemText: {
     color: '#ffffff',
-    fontStyle: 'italic',
   },
   timestamp: {
-    fontSize: 10,
+    fontSize: 11,
     color: '#90a4ae',
-    marginTop: 6,
+    marginTop: 4,
     alignSelf: 'flex-end',
   },
 });
