@@ -7,7 +7,7 @@ export class OpenAIService {
 
   constructor(apiKey: string) {
     this.axiosInstance = axios.create({
-      baseURL: 'https://api.openai.com/v1',
+      baseURL: 'http://192.168.150.115:3001/api',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${apiKey}`,
