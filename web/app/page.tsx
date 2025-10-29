@@ -8,7 +8,9 @@ import { useState } from 'react';
 
 export default function Home() {
   const { settings, updateSettings } = useSettings();
-  const [showApiKeyInput, setShowApiKeyInput] = useState(!settings.apiKey);
+  // Zeige API-Key Input nur wenn kein ENV-Key und kein gespeicherter Key vorhanden
+  const hasEnvKey = !!process.env.NEXT_PUBLIC_OPENAI_API_KEY;
+  const [showApiKeyInput, setShowApiKeyInput] = useState(!settings.apiKey && !hasEnvKey);
 
   const handleApiKeySubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

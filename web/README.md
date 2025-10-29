@@ -107,14 +107,40 @@ Nach dem Deployment kann die App als PWA installiert werden:
 
 ## 🔑 API-Key Konfiguration
 
-Die App benötigt einen OpenAI API-Key:
+Die App benötigt einen OpenAI API-Key. Es gibt zwei Möglichkeiten:
 
-1. Erstelle einen API-Key auf [OpenAI Platform](https://platform.openai.com/api-keys)
-2. Beim ersten Start der App wirst du nach dem Key gefragt
-3. Der Key wird lokal im Browser gespeichert (localStorage)
-4. Du kannst den Key jederzeit über "API-Key ändern" aktualisieren
+### Option A: Environment Variables (Empfohlen für Production)
 
-**Wichtig:** Der API-Key wird NICHT auf dem Server gespeichert, sondern nur lokal im Browser!
+1. Kopiere `.env.example` zu `.env.local`:
+   ```bash
+   cp .env.example .env.local
+   ```
+
+2. Trage deine API-Keys in `.env.local` ein:
+   ```env
+   NEXT_PUBLIC_OPENAI_API_KEY=sk-...
+   NEXT_PUBLIC_ELEVENLABS_API_KEY=sk_...  # Optional für TTS
+   ```
+
+3. Die Keys werden automatisch geladen (kein User-Input nötig)
+
+**Dokploy Deployment:**
+- Setze die Environment Variables im Dokploy Dashboard
+- Gehe zu deinem Projekt → Settings → Environment Variables
+- Füge hinzu:
+  - `NEXT_PUBLIC_OPENAI_API_KEY`: dein OpenAI Key
+  - `NEXT_PUBLIC_ELEVENLABS_API_KEY`: dein ElevenLabs Key (optional)
+
+### Option B: User-Input (Fallback)
+
+Wenn keine Environment Variables gesetzt sind:
+1. Die App fragt beim ersten Start nach dem Key
+2. Der Key wird lokal im Browser gespeichert (localStorage)
+3. Du kannst den Key jederzeit über "API-Key ändern" aktualisieren
+
+**Wichtig:** 
+- `.env.local` wird NICHT in Git committed
+- Nur `.env.example` (ohne echte Keys) ist im Repository
 
 ## 📁 Projektstruktur
 

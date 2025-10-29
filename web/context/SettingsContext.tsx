@@ -10,9 +10,10 @@ interface SettingsContextType {
 }
 
 const defaultSettings: Settings = {
-  apiKey: '',
+  apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY || '',
   useTTS: false,
   ttsProvider: 'browser',
+  elevenLabsApiKey: process.env.NEXT_PUBLIC_ELEVENLABS_API_KEY || '',
 };
 
 const SettingsContext = createContext<SettingsContextType | undefined>(undefined);

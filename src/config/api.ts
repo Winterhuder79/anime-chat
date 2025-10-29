@@ -1,15 +1,15 @@
-// ⚠️ WARNUNG: NUR FÜR ENTWICKLUNG! 
-// In Production sollte der API-Key NIEMALS im Code stehen!
+import { OPENAI_API_KEY, ELEVENLABS_API_KEY } from '@env';
 
+// Keys werden aus .env Datei geladen
 export const DEV_CONFIG = {
-  // ⚠️ API-Key hardcoded für Tests mit Expo Go
-  OPENAI_API_KEY: 'sk-R4RkmzHAITP9MMpiHeSCDP6kwcG16wtHso_IUDNwUST3BlbkFJNC8XJxOxXBm6vq524DYdp4mnYmjnC5UnBKEG47aRUA',
+  // API-Keys aus Environment-Variablen
+  OPENAI_API_KEY: OPENAI_API_KEY || '',
   
   // ElevenLabs API Key (optional)
-  ELEVENLABS_API_KEY: 'sk_d0e230b9cef01c32a40d30cb61f90014f9fa71b3a7e5bd87',
+  ELEVENLABS_API_KEY: ELEVENLABS_API_KEY || '',
   
-  // true = Nutze hardcodierten Key, false = Frage nach Key
-  USE_HARDCODED_KEY: true,
+  // true = Nutze Environment Key, false = Frage nach Key
+  USE_HARDCODED_KEY: !!OPENAI_API_KEY,
   
   // false = Direkt zu OpenAI (für Expo Go), true = Über Proxy
   USE_PROXY: false,

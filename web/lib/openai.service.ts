@@ -5,8 +5,13 @@ import { Character } from '@/types/Character';
 export class OpenAIService {
   private apiKey: string;
 
-  constructor(apiKey: string) {
-    this.apiKey = apiKey;
+  constructor(apiKey?: string) {
+    // Priorität: 1. Übergebener Key, 2. Environment Variable, 3. Fehler
+    this.apiKey = apiKey || process.env.NEXT_PUBLIC_OPENAI_API_KEY || '';
+    
+    if (!this.apiKey) {
+      throw new Error('OpenAI API Key fehlt. Bitte in .env.local setzen oder über Settings eingeben.');
+    }
   }
 
   async sendMessage(
